@@ -23,4 +23,15 @@ Decoder_out <= "00000001" after Decoder_delay when "000",
                "00000000" when others; 
 end behavioral;
                
-          
+entity Or_4_inputs is 
+port(or_in: in std_logic_vector (3 downto 0);
+or_out: out std_logic);
+end Or_4_inputs;
+
+architecture behavioral of Or_4_inputs is 
+constant or_delay: time:=10ns; 
+
+begin
+or_out<= (or_in(0) or or_in(1) or or_in(2) or or_in(3)) after or_delay;
+
+end behavioral;          
