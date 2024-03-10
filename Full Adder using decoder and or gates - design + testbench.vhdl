@@ -72,3 +72,37 @@ or_in (0) => Decoder_Or_Connections (7),
 or_out => Cout);
 
 end behavior;
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Full_Adder is 
+end Full_Adder;
+
+architecture behavioral of Full_Adder is 
+component Full_Adder_Component is 
+port (A, B, Cin: in std_logic;
+Sum, Cout: out std_logic);
+end component;
+
+signal A, B, Cin, Sum, Cout: std_logic; 
+
+begin 
+DUT: Full_Adder_Component port map (A => A, B => B, Cin => Cin, Sum => Sum, Cout => Cout);
+
+process
+begin 
+
+A <= '0'; B <= '0'; Cin <= '0'; wait for 15ns;
+A <= '0'; B <= '0'; Cin <= '1'; wait for 15ns;
+A <= '0'; B <= '1'; Cin <= '0'; wait for 15ns;
+A <= '0'; B <= '1'; Cin <= '1'; wait for 15ns;
+A <= '1'; B <= '0'; Cin <= '0'; wait for 15ns;
+A <= '1'; B <= '0'; Cin <= '1'; wait for 15ns;
+A <= '1'; B <= '1'; Cin <= '0'; wait for 15ns;
+A <= '1'; B <= '1'; Cin <= '1'; wait for 15ns;
+
+wait;
+end process;
+
+end behavioral;
