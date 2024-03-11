@@ -18,7 +18,27 @@ Y2<= ('0', I2) when '0',
 
 end behavioral; 
 
-  
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Demux_1X4 is
+port (I4: in std_logic;
+sel4: in std_logic_vector (1 downto 0);
+Y4: out std_logic_vector (3 downto 0));
+end Demux_1X4;
+
+architecture behavioral of Demux_1X4 is
+
+begin 
+with sel4 select
+
+Y4<= "000"&I4 when "00",
+"00"&I4&'0' when "01",
+'0'&I4&"00" when "10",
+(I4, '0', '0', '0') when "11",
+"0000" when others;
+end behavioral;
+
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
