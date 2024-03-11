@@ -1,6 +1,28 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+entity Demux_1X2 is
+port (I2: in std_logic;
+sel2: in std_logic;
+Y2: out std_logic_Vector (1 downto 0));
+end Demux_1X2;
+
+architecture behavioral of Demux_1X2 is
+
+begin 
+with sel2 select
+
+Y2<= ('0', I2) when '0',
+(I2, '0') when '1',
+"11" when others;
+
+end behavioral; 
+
+  
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
 entity Demux_1X8 is
 port (I8: in std_logic;
 sel8: in std_logic_vector (2 downto 0);
