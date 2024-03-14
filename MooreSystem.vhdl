@@ -58,3 +58,43 @@ end case;
 end process; 
 
 end behavioral; 
+
+-- TB
+  
+entity StateMachine_MOORE is
+end StateMachine_MOORE;
+
+architecture behavioral of StateMachine_MOORE is
+  component Moore
+    port (
+      x, rst, clk: in std_logic;
+      y: out std_logic
+    );
+  end component;
+
+  signal x, rst, clk, y: std_logic := '0'; 
+
+begin
+  U1: Moore port map (clk => clk, rst => rst, x => x, y => y);
+
+  process
+  begin
+    clk <= not(clk);
+    wait for 10 ns;
+  end process;
+
+  process
+  begin
+    rst <= '1';
+    wait for 36 ns;
+    rst <= '0';
+    wait for 1 ns; 
+    x <= '0';
+    wait for 20 ns;
+    x <= '0';
+    wait for 20 ns;
+    wait; 
+  end process;
+  
+end behavioral;
+
