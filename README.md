@@ -1,2 +1,1 @@
-# VHDL---ALU
-Arithmetic Logic Unit
+# VHDL Projects:  ALU (Arithmetic Logic Unit), Demultiplexer_1X8, Full Adder & D Flip Flop, Full Adder Version 1 (Built by Decoder & Or Gates), Full Adder Version 2 (With Delay), MealySystem, MooreSystem.
